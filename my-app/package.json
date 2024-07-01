@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cyntler/react-doc-viewer": "^1.16.5",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "moment": "^2.30.1",

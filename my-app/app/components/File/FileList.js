@@ -1,11 +1,11 @@
 import React from 'react';
 import FileItem from './FileItem';
 import { useData } from '@/context/DataProvider';
-
+import { useRefresh } from '@/context/ReloadContext';
 function FileList({ fileList }) {
     // You can use useData hook if needed
     const { state } = useData();
-
+   
     return (
         <div className='bg-white mt-5 p-5 rounded-lg'>
             <h2 className='text-[18px] font-bold'>Recent Files</h2>

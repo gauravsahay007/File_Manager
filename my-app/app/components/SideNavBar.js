@@ -35,13 +35,13 @@ export default function SideNavBar() {
                     alt="logo"
                     className="cursor-pointer"
                     width={150}
-                    height={60}
+                    height={50}
                     onClick={() => router.push('/')}
                 />
             </div>
             <button
                 onClick={() => showModal('upload_file')}
-                className="flex gap-2 items-center text-[13px] bg-blue-500 p-2 text-white rounded-md px-3 hover:scale-105 transition-all mt-5 w-full justify-center"
+                className="flex gap-2 items-center text-[13px] bg-blue p-2 text-white rounded-md px-3 hover:scale-105 transition-all mt-5 w-full justify-center text-white"
             >
                 Add New File
                 <svg
@@ -60,7 +60,7 @@ export default function SideNavBar() {
                 </svg>
             </button>
             <button
-                className="flex gap-2 items-center text-[13px] bg-sky-400 w-full p-2 justify-center text-white rounded-md px-3 hover:scale-105 transition-all mt-1"
+                className="flex gap-2 items-center text-[13px] bg-blue w-full p-2 justify-center text-white rounded-md px-3 hover:scale-105 transition-all mt-1"
                 onClick={() => showModal('createFolderModal')}
             >
                 Create Folder
@@ -79,12 +79,12 @@ export default function SideNavBar() {
                     />
                 </svg>
             </button>
-            <div className="mt-7">
+            <div className="mt-7 text-black">
                 {menu.list.map((item, index) => (
                     <h2
                         key={index}
                         onClick={() => onMenuClick(item, index)}
-                        className={`flex gap-2 items-center p-2 mt-3 text-gray-500 rounded-md cursor-pointer hover:bg-blue-500 hover:text-white ${activeIndex == index ? 'bg-blue-500 text-white' : ''}`}
+                        className={`flex gap-2 items-center p-2 mt-3 text-gray-500 rounded-md cursor-pointer hover:bg-blue-500 hover:text-blue ${activeIndex == index ? 'bg-blue-500 text-white' : ''}`}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

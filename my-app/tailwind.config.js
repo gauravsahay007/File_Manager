@@ -7,6 +7,16 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      'blue' : "#01A2E0",
+      'white':"white",
+      'black':"black", 
+      'gray':"gray",
+      'green':"#45CE30",
+      'yellow':"yellow",
+      'aliceblue':"#d8f9ff",
+       'indigo-500': '#6366F1'
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -17,3 +27,5 @@ module.exports = {
   },
   plugins: [require('daisyui')],
 };
+
+// #01A2E0

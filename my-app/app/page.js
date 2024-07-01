@@ -1,34 +1,33 @@
 "use client";
-import React, { useEffect } from 'react';
+import React from 'react';
 import SideNavBar from './components/SideNavBar';
 import Home from './home/Home';
-import "./Home.module.css";
 import { useData } from '@/context/DataProvider';
 import Toast from './components/Toast';
 import app from '@/Config/FirebaseConfig';
-import { collection, getFirestore, query, where, getDocs } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
-import Userinfo from './components/Storage/Userinfo';
-
+import Storage from './components/Storage/Storage';
+import { useRefresh } from '@/context/ReloadContext';
 export default function Page() {
-  const { state: toastMessage, setState: setToastMessage } = useData();
+  const { state: toastMessage } = useData();
   const { data: session } = useSession();
   const db = getFirestore(app);
-  const {state, setState} = useData();
-  
-
+  const { state, setState } = useData();
+  const {refresh, setRefresh} = useRefresh();
   return (
-    <div className='flex'>
+    <div className='flex text-black'>
       <SideNavBar />
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full">
-        <Home />
-        <div className="col-span-2">
-          <div className='bg-white p-5'>
-            Storage
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 w-full">
+        <div className='col-span-2'>
+          {console.log(state)}
+          <Home reload={refresh.reload} />
         </div>
-      </div>
+        <div className="col-span-1 flex justify-center items-center bg-blue">
+          <Storage />
+        </div>      
+      </div>  
       {toastMessage.preview ? <Toast msg={toastMessage.value} /> : null}
     </div>
-  );
+  );     
 }

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import FolderItem from './FolderItem';
 import { useData } from '@/context/DataProvider';
-
+import Link from 'next/link';
 export default function FolderList({ folderList = [], isBig = true, ListName = "Recent Folders" }) {
     const [activeFolder, setActiveFolder] = useState();
     const [loading, setLoading] = useState(true);
@@ -28,20 +28,19 @@ export default function FolderList({ folderList = [], isBig = true, ListName = "
         <div className='p-5 mt-5 bg-white rounded'>
             <div className='flex justify-between items-center'>
                 <h2 className='text-17px font-bold'>{ListName}</h2>
-                <span
-                    className="text-blue-400 font-normal text-[13px] cursor-pointer"
-                    onClick={() => router.push('/all-folders')}
-                >
-                    View All
-                </span>
+                <Link className="text-blue-400 font-normal text-[13px] cursor-pointer" href="/api/allFolders">
+          
+                View All
+
+        </Link>
             </div>
             {loading ? (
                 <div className='flex justify-center items-center mt-3'>
-                    <span>Loading...</span>
+                    <span>Oops! nothiing here...</span>
                 </div>
             ) : (
                 isBig ? (
-                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-3 gap-4'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-3 gap-4 cursor-pointer'>
                         {sortedFolderList.slice(0, 4).map((item, index) => (
                             <div key={index} onClick={() => onFolderClick(index, item)}>
                                 <FolderItem folder={item} />

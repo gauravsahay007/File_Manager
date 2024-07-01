@@ -5,7 +5,7 @@ import { useData } from "@/context/DataProvider";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useFolderData } from '@/context/FolderContext';
 import { getFirestore, setDoc, doc } from 'firebase/firestore';
-
+import { useRefresh } from '@/context/ReloadContext';
 export default function UploadFile({ closeModal }) {
   const { data: session } = useSession();
   const { state, setState} = useData();
@@ -14,7 +14,15 @@ export default function UploadFile({ closeModal }) {
   const docId = Date.now();
   const db = getFirestore(app);
   const storage = getStorage(app);
+  const {refresh, setRefresh} = useRefresh();
 
+
+  const handleStateUpdate = async () => {
+    setRefresh(prevState => ({
+      ...prevState,
+      reload: !prevState.reload
+    }));
+  };
   const onFileUpload = async (file) => {
     if (file) {
       if (file.size > 1000000) {
@@ -38,12 +46,9 @@ export default function UploadFile({ closeModal }) {
           imageUrl: downloadURL,
           id: docId
         });
-
+        handleStateUpdate();
         closeModal(true);
-        setState(prevState => ({
-            ...prevState,
-            reload: !prevState.reload
-        }));
+       
         setToastMessage({ preview: true, value: "File Uploaded Successfully!" });
       } catch (error) {
         console.error("Error uploading file:", error);
@@ -54,7 +59,7 @@ export default function UploadFile({ closeModal }) {
 
   return (
     <div>
-      <form method="dialog" className="modal-box p-9 items-center w-[360px]">
+      <form method="dialog" className="modal-box p-9 items-center w-[360px] text-gray">
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
           onClick={() => closeModal(false)}

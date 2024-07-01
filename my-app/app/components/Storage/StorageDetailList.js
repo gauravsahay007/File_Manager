@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import StorageDetailItem from './StorageDetailItem';
+import StorageDetailItem from './StorageDeatailItem';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
 import app from '@/Config/FirebaseConfig';

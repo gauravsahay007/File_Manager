@@ -26,7 +26,18 @@ export default function Page() {
   const db = getFirestore(app);
   const { state, setState } = useData();
   const {refresh, setRefresh} = useRefresh();
-  const iconList = [
+  const iconListsm = [
+    { url: "/cpp.png", style: { top: '-95px', left: '200px' } },
+    { url: "/py.png", style: { top: '-70px', left: '175px' } },
+    { url: "/js.png", style: { top: '-120px', left: '225px' } },
+    { url: "/png.png", style: { top: '-77px', left: '185px' } },
+    { url: "/pdf.png", style: { top: '-237px', left: '249px' } },
+    { url: "/docx.png", style: { top: '-175px', left: '140px' } },
+    { url: "/xlsx.png", style: { top: '-205px', left: '230px' } },
+    { url: "/txt.png", style: { top: '-292px', left: '130px' } },
+    { url: "/pptx.png", style: { top: '-370px', left: '135px' } },
+  ];
+  const iconListmd = [
     { url: "/cpp.png", style: { top: '-95px', left: '400px' } },
     { url: "/py.png", style: { top: '-90px', left: '300px' } },
     { url: "/js.png", style: { top: '-120px', left: '390px' } },
@@ -56,11 +67,16 @@ export default function Page() {
           {toastMessage.preview ? <Toast msg={toastMessage.value} /> : null}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full md:h-[100vh]">
           <div className="flex flex-col items-center justify-center  relative bottom-20">
             <Image src="/logo.png" alt="logo" width={350} height={200} />
-            <div className="w-full h-full">
-              {iconList.map((icon, index) => (
+            <div className="w-full h-full block sm:hidden">
+            {iconListsm.map((icon, index) => (
+                <Image key={index} src={icon.url} alt={`icon-${index}`} width={35} height={35} className="relative" style={icon.style} />
+              ))}
+            </div>
+            <div className="w-full h-full hidden md:block">
+              {iconListmd.map((icon, index) => (
                 <Image key={index} src={icon.url} alt={`icon-${index}`} width={35} height={35} className="relative" style={icon.style} />
               ))}
             </div>
@@ -76,7 +92,7 @@ export default function Page() {
             </span> 
             </div>
           </div>
-          <div className="col-span-1 flex justify-center items-center bg-blue-500 min-h-full relative bottom-40 md:right-50 md:bottom-0 ">
+          <div className="col-span-1 flex justify-center items-center bg-blue-500 min-h-full relative bottom-80 md:right-50 md:bottom-0 h-full">
             <Login />
           </div>
         </div>

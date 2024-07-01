@@ -44,7 +44,7 @@ function FileItem({ file }) {
                 </h2>
             </div>
             <div className="col-span-1 lg:col-span-1">
-                <h2 className="text-[15px]">
+                <h2 className="text-[12px] md:text-[15px]">
                     {moment(file.modifiedAt).format("MMMM DD, YYYY")}
                 </h2>
             </div>

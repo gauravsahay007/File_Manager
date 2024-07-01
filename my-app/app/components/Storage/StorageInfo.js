@@ -48,7 +48,7 @@ function StorageInfo() {
 
   return (
     <div className="mt-7">
-      <h2 className="text-[22px] font-bold">
+      <h2 className="text-[15px] md:text-[22px] font-bold">
         {totalSizeUsed} <span className="text-[14px] font-medium">used of</span> 50 MB
       </h2>
       <div className="w-full bg-gray h-2.5 flex">

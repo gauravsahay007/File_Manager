@@ -18,7 +18,7 @@ function StorageDetailItem({item}) {
             <h2 className='text-[12px] mt-[-4px] text-gray-400'>{item.totalFile} Files</h2>
         </div>
        </div>
-        <div className='font-semibold'>{(item.size/1024**2).toFixed(2)} MB</div>
+        <div className='text-[12px] md:text-[16px] font-semibold'>{(item.size/1024**2).toFixed(2)} MB</div>
       </div> 
     </>
   );

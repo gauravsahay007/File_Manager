@@ -2,7 +2,7 @@
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
-console.log(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
+console.log(process.env.GOOGLE_CLIENT_ID);
 export default function Page() {
     const { data: session, status } = useSession()
     const router = useRouter()

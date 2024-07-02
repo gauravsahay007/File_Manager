@@ -14,11 +14,11 @@ export default function Page() {
         window.open(file.imageUrl, "_blank");
     };
     const {refresh, setRefresh} = useRefresh();
-    const [files,setFiles] = useState([]);
+    const [files,setFiles] = useState(state.FileList);
     useEffect(()=>{
         setFiles(state.FileList);
     },[refresh.reload])
-    
+    console.log(files);
     return (
         <div className="flex">
             <SideNavBar />

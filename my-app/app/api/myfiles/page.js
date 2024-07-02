@@ -5,8 +5,9 @@ import { useData } from '@/context/DataProvider';
 import FolderItem from '@/app/components/Folder/FolderItem';
 import Storage from '@/app/components/Storage/Storage';
 import { useRouter } from 'next/navigation';
+import FileItem from '@/app/components/File/FileItem';
 export default function Page() {
-    const { state } = useData();
+    const { state , setState} = useData();
     const router = useRouter();
     const openFile = () => {
         window.open(file.imageUrl, "_blank");

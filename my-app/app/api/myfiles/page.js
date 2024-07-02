@@ -26,7 +26,8 @@ export default function Page() {
       let fls = [];
       setFiles(FileSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
        }
-    },[refresh.reload])
+       fetchFiles();
+    },[session,router,refresh.reload])
     console.log(files);
     return (
         <div className="flex">

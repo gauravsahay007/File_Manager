@@ -46,7 +46,7 @@ export default function Page() {
                             <h2>Size</h2>
                         </div>
                     </div>
-                    <FileList />
+                    <FileList fileList = {files} name="My Files"   />
         </div>
                 </div>
                 <div className="md:col-span-1 flex justify-center items-center">

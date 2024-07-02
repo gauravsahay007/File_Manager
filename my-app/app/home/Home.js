@@ -47,7 +47,7 @@ const Home = ({ reload }) => {
     }
     
     setFolderState(prev => ({ ...prev, parentFolderId: 0 }));
-  }, [session, router, reload, fetchFoldersAndFiles, setFolderState]);
+  }, [session, router]);
 
   return (
     <div className="p-5 min-h-screen bg-aliceblue flex flex-col">

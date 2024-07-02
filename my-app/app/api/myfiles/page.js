@@ -7,16 +7,25 @@ import Storage from '@/app/components/Storage/Storage';
 import { useRouter } from 'next/navigation';
 import FileItem from '@/app/components/File/FileItem';
 import { useRefresh } from '@/context/ReloadContext';
+import FileList from '@/app/components/File/FileList';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { useSession } from 'next-auth/react';
+import app from '@/Config/FirebaseConfig';
 export default function Page() {
     const { state , setState} = useData();
     const router = useRouter();
-    const openFile = () => {
-        window.open(file.imageUrl, "_blank");
-    };
+    const session = useSession();
     const {refresh, setRefresh} = useRefresh();
     const [files,setFiles] = useState(state.FileList);
+
     useEffect(()=>{
-        setFiles(state.FileList);
+       const fetchFiles = async() => {
+        const db = getFirestore(app);
+      const fileQuery = query(collection(db, "files"), where("createdBy", "==", session.user.email));
+      const FileSnapshot  = await getDocs(fileQuery)
+      let fls = [];
+      setFiles(FileSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+       }
     },[refresh.reload])
     console.log(files);
     return (
@@ -37,9 +46,7 @@ export default function Page() {
                             <h2>Size</h2>
                         </div>
                     </div>
-                    {files && files.map((item, index) => (
-                        <FileItem file={item} key={index} />
-                    ))}
+                    <FileList />
         </div>
                 </div>
                 <div className="md:col-span-1 flex justify-center items-center">

@@ -2,8 +2,7 @@ import React from 'react';
 import FileItem from './FileItem';
 import { useData } from '@/context/DataProvider';
 import { useRefresh } from '@/context/ReloadContext';
-function FileList({ fileList }) {
-    // You can use useData hook if needed
+function FileList({ fileList, name="Recent Files" }) {
     const { state } = useData();
    
     return (

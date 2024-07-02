@@ -81,11 +81,11 @@ export default function SideNavBar() {
         </button>
         <div className="mt-7 text-black">
           {menu.list.map((item, index) => (
-            <Link href={`/api/${item.name}`} key={index}>
+            <Link href={item.name!=''?`/api/${item.name}`:`/`} key={index}>
               <h2
                 onClick={() => onMenuClick(index)}
-                className={`flex gap-2 items-center p-2 mt-3 text-black rounded-md cursor-pointer hover:bg-blue-500 hover:text-blue ${
-                  activeIndex == index ? "bg-blue-500 text-white" : ""
+                className={`flex gap-2 items-center p-2 mt-3 text-black rounded-md cursor-pointer hover:bg-blue hover:text-white ${
+                  activeIndex == index ? "bg-blue text-white" : ""
                 }`}
               >
                 <svg

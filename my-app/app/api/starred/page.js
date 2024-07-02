@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SideNavBar from '@/app/components/SideNavBar';
 import { useData } from '@/context/DataProvider';
 import FolderItem from '@/app/components/Folder/FolderItem';
@@ -11,7 +11,7 @@ import { useRefresh } from '@/context/ReloadContext';
 
 export default function Page() {
     const { state, setState: setToastMessage } = useData();
-    const [activeFolder, setActiveFolder] = useState();
+    const [activeFolder, setActiveFolder] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedFolder, setSelectedFolder] = useState(null);
     const router = useRouter();
@@ -66,10 +66,10 @@ export default function Page() {
     return (
         <div className="flex">
             <SideNavBar />
-            <div className="grid grid-cols-1 md:grid-cols-3 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 w-full p-5">
                 <div className="md:col-span-2">
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 cursor-pointer">
-                        {state.FolderList.map((item, index) => (
+                        {state.FolderList?.filter(item => !item.starred).map((item, index) => (
                             <div key={index} className="relative">
                                 <div onClick={() => onFolderClick(index, item)}>
                                     <FolderItem folder={item} />

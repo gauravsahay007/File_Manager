@@ -62,6 +62,9 @@ export default function Signup() {
             <div className="h-px w-full bg-gray-200"></div>
             <div className="h-px w-full bg-gray-200"></div>
           </div>
+          <div className="mt-6 text-center text-sm text-gray-600">
+            Don't have an account? <a href="/signup" className="font-medium text-blue-500">Sign up</a>
+          </div>
         </div>
       </div>
     </div>

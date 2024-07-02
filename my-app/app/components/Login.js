@@ -2,6 +2,7 @@
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Signup from './Signup';
 
 export default function Login() {
@@ -27,12 +28,12 @@ export default function Login() {
     <>
         {account ? (
           <div id="login-popup" >
-            <div className="relative p-2 ">
+            <div className="relative p-2">
               <div className="relative bg-white rounded-lg shadow-lg">
                 <div className="p-5">
                   <div className="text-center">
                     <p className="text-2lg font-semibold leading-5 text-black">Login to your account</p>
-                    <p className="mt-2 mb-3 text-sm leading-4 text-gray-900">You must be logged in to perform this action.</p>
+                    <p className="mt-2 mb-2 text-sm leading-4 text-gray-900">You must be logged in to perform this action.</p>
                   </div>
                   <div className="flex flex-col gap-2">
                     <button className="inline-flex items-center justify-center w-full h-10 gap-2 rounded-lg border border-gray-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
@@ -69,7 +70,7 @@ export default function Login() {
                   <div className="mt-6 text-center text-sm text-gray-600 cursor-pointer" onClick={() => {
                     setAccount(false);
                   }}>
-                    Don&apost have an account? <span className="font-medium text-blue-500">Sign up</span>
+                    Don't have an account? <span className="font-medium text-blue-500">Sign up</span>
                   </div>
                 </div>
               </div>

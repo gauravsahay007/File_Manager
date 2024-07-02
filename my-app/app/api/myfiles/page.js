@@ -31,7 +31,7 @@ export default function Page() {
                             <h2>Size</h2>
                         </div>
                     </div>
-                    {state.fileList && state.fileList.map((item, index) => (
+                    {state.FileList && state.FileList.map((item, index) => (
                         <FileItem file={item} key={index} />
                     ))}
         </div>

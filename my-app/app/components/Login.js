@@ -70,7 +70,7 @@ export default function Login() {
                   <div className="mt-6 text-center text-sm text-gray-600 cursor-pointer" onClick={() => {
                     setAccount(false);
                   }}>
-                    Don't have an account? <span className="font-medium text-blue-500">Sign up</span>
+                    Don&apost have an account? <span className="font-medium text-blue-500">Sign up</span>
                   </div>
                 </div>
               </div>

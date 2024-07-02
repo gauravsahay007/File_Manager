@@ -1,5 +1,3 @@
-// app/layout.js
-"use client";
 import FolderDataProvider from '@/context/FolderContext';
 import Providers from './components/Providers'
 import DataProvider from '@/context/DataProvider'

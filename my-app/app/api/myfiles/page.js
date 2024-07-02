@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import SideNavBar from '@/app/components/SideNavBar';
 import { useData } from '@/context/DataProvider';
-import Storage from '@/app/components/Storage';
+import Storage from '@/app/components/Storage/Storage';
 import { useRouter } from 'next/router';
 import FileList from '@/app/components/File/FileList';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
@@ -18,6 +18,7 @@ export default function Page() {
 
     useEffect(() => {
         const fetchFiles = async () => {
+            console.log(refresh);
             try {
                 const db = getFirestore(app);
                 const fileQuery = query(collection(db, "files"), where("createdBy", "==", session.user.email));

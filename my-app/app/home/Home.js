@@ -9,13 +9,13 @@ import FolderList from '../components/Folder/FolderList';
 import FileList from '../components/File/FileList';
 import { useData } from '@/context/DataProvider';
 import { useFolderData } from '@/context/FolderContext';
-
+import { useRefresh } from '@/context/ReloadContext';
 const Home = ({ reload }) => {
   const { data: session } = useSession();
   const router = useRouter();
   const { state, setState } = useData();
   const { folderState, setFolderState } = useFolderData();
-
+  const {refresh, setRefresh} = useRefresh();
   const fetchFoldersAndFiles = useCallback(async () => {
     try {
       if (!session) {
@@ -47,7 +47,7 @@ const Home = ({ reload }) => {
     }
     
     setFolderState(prev => ({ ...prev, parentFolderId: 0 }));
-  }, [session, router]);
+  }, [session, router, refresh.reload, fetchFoldersAndFiles, setFolderState]);
 
   return (
     <div className="p-5 min-h-screen bg-aliceblue flex flex-col">

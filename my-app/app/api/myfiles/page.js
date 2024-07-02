@@ -6,12 +6,18 @@ import FolderItem from '@/app/components/Folder/FolderItem';
 import Storage from '@/app/components/Storage/Storage';
 import { useRouter } from 'next/navigation';
 import FileItem from '@/app/components/File/FileItem';
+import { useRefresh } from '@/context/ReloadContext';
 export default function Page() {
     const { state , setState} = useData();
     const router = useRouter();
     const openFile = () => {
         window.open(file.imageUrl, "_blank");
     };
+    const {refresh, setRefresh} = useRefresh();
+    const [files,setFiles] = useState([]);
+    useEffect(()=>{
+        setFiles(state.FileList);
+    },[refresh.reload])
     
     return (
         <div className="flex">
@@ -31,7 +37,7 @@ export default function Page() {
                             <h2>Size</h2>
                         </div>
                     </div>
-                    {state.FileList && state.FileList.map((item, index) => (
+                    {files && files.map((item, index) => (
                         <FileItem file={item} key={index} />
                     ))}
         </div>

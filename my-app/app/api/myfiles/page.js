@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SideNavBar from '@/app/components/SideNavBar';
 import { useData } from '@/context/DataProvider';
 import Storage from '@/app/components/Storage/Storage';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import FileList from '@/app/components/File/FileList';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';

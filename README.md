@@ -9,9 +9,6 @@
 [https://cloudit.vercel.app/](https://cloudit.vercel.app/)
 
 <h2>Project Screenshots:</h2>
-
-<img src="https://snipboard.io/h2R0n3.jpg" alt="project-screenshot" width="800" height="400/">
-
 <img src="https://snipboard.io/xfVAHX.jpg" alt="project-screenshot" width="800" height="400/">
 
 <img src="https://snipboard.io/XPFSL8.jpg" alt="project-screenshot" width="800" height="400/">
